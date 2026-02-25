@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAVAGE NOTES — Sheng Captions 🔥</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Darker+Grotesque:wght@500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/intasend-inlinejs-sdk@3.0.3/build/intasend-inline.js"></script>
+<style>
+:root{--bg:#080808;--card:#111;--green:#00e676;--orange:#ff6d00;--yellow:#ffd600;--pink:#ff4081;--white:#f5f0e8;--muted:#555;--border:#1f1f1f;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Darker Grotesque',sans-serif;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(60deg,transparent,transparent 60px,rgba(0,230,118,.02) 60px,rgba(0,230,118,.02) 61px);pointer-events:none;z-index:0;}
+.hero{position:relative;z-index:10;padding:50px 20px 40px;text-align:center;border-bottom:2px solid var(--border);}
+.badge{display:inline-block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:#000;background:var(--green);padding:4px 14px;margin-bottom:16px;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,13vw,7rem);letter-spacing:.04em;line-height:.9;}
+.hero h1 .g{color:var(--green);}.hero h1 .o{color:var(--orange);}
+.tagline{font-size:clamp(.95rem,2.5vw,1.2rem);color:var(--muted);font-weight:700;margin:14px 0 24px;}
+.tagline b{color:var(--white);}
+.price-pill{display:inline-flex;align-items:center;gap:12px;background:var(--card);border:2px solid var(--green);padding:10px 22px;margin-bottom:24px;}
+.price-pill .kes{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--green);line-height:1;}
+.price-pill .desc{text-align:left;font-size:.8rem;font-weight:800;line-height:1.4;}
+.price-pill .desc span{color:var(--muted);}
+.cta-btn{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;padding:16px 44px;background:var(--green);color:#000;border:none;cursor:pointer;transition:all .2s;display:inline-block;text-decoration:none;}
+.cta-btn:hover{background:var(--yellow);}
+.steps{position:relative;z-index:10;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));border-bottom:2px solid var(--border);}
+.step{padding:24px 18px;border-right:1px solid var(--border);}
+.step:last-child{border-right:none;}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--border);line-height:1;margin-bottom:6px;}
+.step h3{font-size:.85rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.step p{font-size:.78rem;color:var(--muted);font-weight:700;line-height:1.5;}
+.pay-section{position:relative;z-index:10;padding:48px 20px;max-width:520px;margin:0 auto;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.06em;text-align:center;margin-bottom:4px;}
+.section-sub{font-size:.72rem;color:var(--muted);font-weight:800;letter-spacing:.15em;text-transform:uppercase;text-align:center;margin-bottom:24px;}
+.pay-card{background:var(--card);border:2px solid var(--border);padding:28px;}
+.pack-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:22px;}
+.pack{border:2px solid var(--border);padding:14px 8px;text-align:center;cursor:pointer;transition:all .15s;}
+.pack:hover{border-color:var(--green);}.pack.selected{border-color:var(--green);background:rgba(0,230,118,.06);}
+.pack .pack-kes{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--green);line-height:1;}
+.pack .pack-caps{font-size:.68rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin:2px 0;}
+.pack .pack-save{font-size:.62rem;font-weight:800;color:var(--orange);}
+.field-label{font-size:.65rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;}
+.phone-row{display:flex;margin-bottom:16px;}
+.prefix{background:#0d0d0d;border:2px solid var(--border);border-right:none;padding:14px;font-size:1rem;font-weight:800;color:var(--muted);}
+.phone-row input{flex:1;background:#0d0d0d;border:2px solid var(--border);color:var(--white);font-family:'Darker Grotesque',sans-serif;font-size:1.05rem;font-weight:700;padding:14px;outline:none;transition:border-color .2s;}
+.phone-row input:focus{border-color:var(--green);}
+.phone-row input::placeholder{color:#2a2a2a;}
+.btn-pay{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;padding:18px;background:#4caf50;color:#fff;border:none;cursor:pointer;width:100%;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;}
+.btn-pay:hover{background:#43a047;}
+.secure-note{font-size:.65rem;color:var(--muted);font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-align:center;}
+.waiting{display:none;text-align:center;padding:24px 0;}
+.pulse{width:60px;height:60px;border-radius:50%;background:rgba(0,230,118,.1);border:3px solid var(--green);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;animation:pulse 1.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(0,230,118,.4);}50%{transform:scale(1.06);box-shadow:0 0 0 16px rgba(0,230,118,0);}}
+.waiting h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;margin-bottom:6px;}
+.waiting p{font-size:.85rem;color:var(--muted);font-weight:700;line-height:1.6;}
+.btn-confirm{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.08em;padding:12px 28px;background:var(--green);color:#000;border:none;cursor:pointer;margin-top:14px;}
+</style>
+</head>
+<body><section class="hero">
+  <div class="badge">🇰🇪 Nairobi's #1 Caption Generator</div>
+  <h1>SAVAGE<br><span class="g">NOTES</span><span class="o">.</span></h1>
+  <p class="tagline">AI captions in <b>Sheng</b>. Pay KES 30. Post. Slay.</p>
+  <div class="price-pill">
+    <div class="kes">KES 30</div>
+    <div class="desc">3 captions per generation<br><span>M-Pesa · Instant · No app needed</span></div>
+  </div>
+  <br><br>
+  <a href="#pay" class="cta-btn">⚡ Start Now — KES 30</a>
+</section>
+
+<div class="steps">
+  <div class="step"><div class="step-num">01</div><h3>Lipa KES 30</h3><p>Enter M-Pesa number. Confirm STK push.</p></div>
+  <div class="step"><div class="step-num">02</div><h3>Describe Vibe</h3><p>Tell AI what's happening — outfit, place, mood.</p></div>
+  <div class="step"><div class="step-num">03</div><h3>Get Captions</h3><p>3 fire Sheng captions. Copy & post instantly.</p></div>
+  <div class="step"><div class="step-num">04</div><h3>Buy Bundles</h3><p>10 gens = KES 250. 20 gens = KES 400.</p></div>
+</div>
+
+<div class="pay-section" id="pay">
+  <div class="section-title">Lipa & Generate</div>
+  <div class="section-sub">M-Pesa · Secure · Instant</div>
+  <div class="pay-card">
+    <div class="field-label">Choose a pack</div>
+    <div class="pack-grid">
+      <div class="pack selected" data-amount="30" data-credits="1" onclick="selectPack(this)">
+        <div class="pack-kes">30</div>
+        <div class="pack-caps">1 Generation</div>
+        <div class="pack-save">3 captions</div>
+      </div>
+      <div class="pack" data-amount="250" data-credits="10" onclick="selectPack(this)">
+        <div class="pack-kes">250</div>
+        <div class="pack-caps">10 Generations</div>
+        <div class="pack-save">Save KES 50!</div>
+      </div>
+      <div class="pack" data-amount="400" data-credits="20" onclick="selectPack(this)">
+        <div class="pack-kes">400</div>
+        <div class="pack-caps">20 Generations</div>
+        <div class="pack-save">Save KES 200!</div>
+      </div>
+    </div>
+    <div class="field-label">Your M-Pesa number</div>
+    <div class="phone-row">
+      <div class="prefix">+254</div>
+      <input type="tel" id="phoneInput" placeholder="7XX XXX XXX" maxlength="9">
+    </div>
+    <div id="payForm">
+      <button class="btn-pay" onclick="initPayment()">
+        <span>📱</span>
+        <span id="payBtnText">Pay KES 30 via M-Pesa</span>
+      </button>
+      <div class="secure-note">🔒 Secured by IntaSend · M-Pesa Authorized</div>
+    </div>
+    <div class="waiting" id="waitingDiv">
+      <div class="pulse">📱</div>
+      <h3>Check Your Phone!</h3>
+      <p>M-Pesa prompt sent to<br><strong id="phoneDisplay"></strong><br><br>Enter your PIN to complete.</p>
+      <button class="btn-confirm" onclick="onPaymentSuccess()">✅ I've Paid — Unlock Generator</button>
+      <br>
+      <button style="background:transparent;border:none;color:var(--muted);font-size:.75rem;font-weight:800;cursor:pointer;margin-top:10px;text-decoration:underline;" onclick="cancelWaiting()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="generator" id="generator">
+  <div class="credits-row">
+    <div class="cred-left">
+      <div class="label">Generations remaining</div>
+      <div class="count" id="credCount">0</div>
+      <div class="sub">Each = 3 fire captions</div>
+    </div>
+    <button class="btn-topup" onclick="document.getElementById('pay').scrollIntoView({behavior:'smooth'})">+ Buy More</button>
+  </div>
+  <div class="gen-grid">
+    <div class="gen-left">
+      <div>
+        <div class="field-label">Nini kinaendelea?</div>
+        <textarea id="ctx" placeholder="e.g. Nimeweka fit mpya, niko rooftop, selfie kwa gari..."></textarea>
+      </div>
+      <div>
+        <div class="field-label">Mood</div>
+        <div class="vibe-wrap">
+          <button class="vibe-tag on" data-v="swagged out">🔥 Swagged</button>
+          <button class="vibe-tag" data-v="funny and witty">😂 Punchline</button>
+          <button class="vibe-tag" data-v="romantic">💕 Romantic</button>
+          <button class="vibe-tag" data-v="hustle motivation">💪 Hustle</button>
+          <button class="vibe-tag" data-v="lowkey chill">😎 Lowkey</button>
+          <button class="vibe-tag" data-v="petty and shady">🙄 Petty</button>
+          <button class="vibe-tag" data-v="classy flex">✨ Flex</button>
+          <button class="vibe-tag" data-v="deep and thoughtful">🧠 Deep</button>
+        </div>
+      </div>
+      <div>
+        <div class="field-label">Sheng Level</div>
+        <select id="shengLvl">
+          <option value="full heavy Sheng Nairobi streets">🔥 Full Sheng</option>
+          <option value="mixed Sheng and English">⚡ Mixed</option>
+          <option value="light Sheng touches">😎 Light Touch</option>
+        </select>
+      </div>
+      <div>
+        <div class="field-label">Caption Type</div>
+        <select id="capType">
+          <option value="caption with hashtags">Caption + Hashtags</option>
+          <option value="short punchy one-liner">One-liner</option>
+          <option value="story caption 2-3 sentences">Story Caption</option>
+          <option value="question to engage followers">Engagement Question</option>
+        </select>
+      </div>
+      <button class="btn-gen" id="genBtn" onclick="generate()"><span>⚡ Tengeneza (1 Credit)</span></button>
+    </div>
+    <div class="gen-right">
+      <div class="field-label">Your Captions</div>
+      <div class="loading-bar" id="loadBar"></div>
+      <div id="output">
+        <div class="empty-out">
+          <div class="big">💬</div>
+          <p>Andika vibe yako, then generate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>Savage Notes © 2025 · Built for Nairobi 🇰🇪</footer>
+<div class="toast" id="toast"></div><script>
+const INTASEND_PUBLIC_KEY = "YOUR_INTASEND_PUBLIC_KEY";
+const ANTHROPIC_API_KEY   = "YOUR_ANTHROPIC_API_KEY";
+
+let credits = parseInt(sessionStorage.getItem('sn_credits') || '0');
+let selectedPack = { amount: 30, credits: 1 };
+
+function updateCredits(){
+  sessionStorage.setItem('sn_credits', credits);
+  document.getElementById('credCount').textContent = credits;
+}
+
+function selectPack(el){
+  document.querySelectorAll('.pack').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedPack = { amount: parseInt(el.dataset.amount), credits: parseInt(el.dataset.credits) };
+  document.getElementById('payBtnText').textContent = `Pay KES ${selectedPack.amount} via M-Pesa`;
+}
+
+function initPayment(){
+  const raw = document.getElementById('phoneInput').value.replace(/\s/g,'');
+  if(!raw || raw.length < 9){ toast('⚠️ Enter a valid M-Pesa number!'); return; }
+  const fullPhone = '254' + raw.replace(/^0/,'');
+  document.getElementById('phoneDisplay').textContent = '+' + fullPhone;
+  document.getElementById('payForm').style.display = 'none';
+  document.getElementById('waitingDiv').style.display = 'block';
+  if(INTASEND_PUBLIC_KEY !== 'YOUR_INTASEND_PUBLIC_KEY'){
+    const inta = new window.IntaSend({ publicAPIKey: INTASEND_PUBLIC_KEY, live: false });
+    inta.on("COMPLETE", () => onPaymentSuccess())
+        .on("FAILED", () => { toast('❌ Payment failed. Try again.'); cancelWaiting(); });
+    inta.mpesaSTKPush({ phone_number: fullPhone, amount: selectedPack.amount, narrative: `Savage Notes ${selectedPack.credits} gen` });
+  }
+}
+
+function onPaymentSuccess(){
+  credits += selectedPack.credits;
+  updateCredits();
+  document.getElementById('waitingDiv').style.display = 'none';
+  document.getElementById('payForm').style.display = 'block';
+  document.getElementById('generator').classList.add('open');
+  document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
+  toast(`✅ Paid! ${selectedPack.credits} generation(s) unlocked 🔥`);
+}
+
+function cancelWaiting(){
+  document.getElementById('waitingDiv').style.display = 'none';
+  document.getElementById('payForm').style.display = 'block';
+}
+
+document.querySelectorAll('.vibe-tag').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.vibe-tag').forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+  });
+});
+
+async function generate(){
+  if(credits < 1){ toast('❌ No credits! Buy more below.'); return; }
+  const ctx = document.getElementById('ctx').value.trim();
+  if(!ctx){ toast('⚠️ Describe your vibe first!'); return; }
+  const vibe  = document.querySelector('.vibe-tag.on')?.dataset.v || 'swagged out';
+  const sheng = document.getElementById('shengLvl').value;
+  const type  = document.getElementById('capType').value;
+  const btn   = document.getElementById('genBtn');
+  const bar   = document.getElementById('loadBar');
+  const out   = document.getElementById('output');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = '⚡ Inaandika...';
+  bar.classList.add('on');
+  out.innerHTML = '';
+  credits--;
+  updateCredits();
+  const prompt = `You are a Nairobi social media expert writing Instagram captions in Sheng.
+Context: ${ctx}
+Vibe: ${vibe}
+Sheng level: ${sheng}
+Type: ${type}
+Write 3 different Instagram captions using real Sheng: maze, poa, niaje, ukweli, fiti, wueh, noma, tuko, msee, rada, shikamana, sawa sawa. Make them feel like a real Nairobi Gen Z wrote them.
+Include 5-8 hashtags mixing Kenyan (#NairobiLife #254 #KenyaTwitter) with relevant ones.
+Return ONLY valid JSON:
+{"captions":[{"text":"...","hashtags":"#tag1 #tag2"},{"text":"...","hashtags":"..."},{"text":"...","hashtags":"..."}]}`;
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const raw = data.content.map(i => i.text||'').join('');
+    const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
+    parsed.captions.forEach(cap => {
+      const d = document.createElement('div');
+      d.className = 'cap-card';
+      d.innerHTML = `
+        <div class="cap-text">${esc(cap.text)}</div>
+        ${cap.hashtags ? `<div class="cap-tags">${esc(cap.hashtags)}</div>` : ''}
+        <div class="cap-btns">
+          <button class="btn-sm" onclick="copyText(this,'${ea(cap.text+(cap.hashtags?'\n\n'+cap.hashtags:''))}')">📋 Copy</button>
+          <button class="btn-sm" onclick="openIG('${ea(cap.text+' '+(cap.hashtags||''))}')">📱 Post to IG</button>
+        </div>`;
+      out.appendChild(d);
+    });
+  } catch(e) {
+    credits++; updateCredits();
+    out.innerHTML = `<div style="color:var(--pink);padding:16px;background:var(--card);border:1.5px solid var(--border);font-size:.85rem;font-weight:700;">Kuna shida — credit refunded 😅<br><small style="color:var(--muted);">${e.message}</small></div>`;
+  } finally {
+    btn.disabled = false;
+    btn.querySelector('span').textContent = '⚡ Tengeneza (1 Credit)';
+    bar.classList.remove('on');
+  }
+}
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function ea(s){ return (s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,'\\n'); }
+function copyText(btn,text){
+  navigator.clipboard.writeText(text.replace(/\\n/g,'\n').replace(/\\'/g,"'")).then(()=>{
+    btn.textContent='✅ Copied!'; btn.classList.add('ok');
+    setTimeout(()=>{ btn.textContent='📋 Copy'; btn.classList.remove('ok'); },2000);
+  });
+}
+function openIG(text){
+  navigator.clipboard.writeText(text.replace(/\\n/g,'\n').replace(/\\'/g,"'"));
+  window.open('https://www.instagram.com/','_blank');
+  toast('Caption copied! Paste on Instagram 📸');
+}
+function toast(msg,dur=3000){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),dur);
+}
+
+updateCredits();
+if(credits>0) document.getElementById('generator').classList.add('open');
+</script>
+</body>
+</html>
