@@ -201,18 +201,8 @@ function selectPack(el){
 }
 
 function initPayment(){
-  const raw = document.getElementById('phoneInput').value.replace(/\s/g,'');
-  if(!raw || raw.length < 9){ toast('⚠️ Enter a valid M-Pesa number!'); return; }
-  const fullPhone = '254' + raw.replace(/^0/,'');
-  document.getElementById('phoneDisplay').textContent = '+' + fullPhone;
   document.getElementById('payForm').style.display = 'none';
   document.getElementById('waitingDiv').style.display = 'block';
-  if(INTASEND_PUBLIC_KEY !== 'YOUR_INTASEND_PUBLIC_KEY'){
-    const inta = new window.IntaSend({ publicAPIKey: INTASEND_PUBLIC_KEY, live: false });
-    inta.on("COMPLETE", () => onPaymentSuccess())
-        .on("FAILED", () => { toast('❌ Payment failed. Try again.'); cancelWaiting(); });
-    inta.mpesaSTKPush({ phone_number: fullPhone, amount: selectedPack.amount, narrative: `Savage Notes ${selectedPack.credits} gen` });
-  }
 }
 
 function onPaymentSuccess(){
